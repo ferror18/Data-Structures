@@ -201,8 +201,8 @@ class DoublyLinkedList:
         if self.is_empty():
             return
         else:
-            max = -1
-            current = self.head
+            max = self.head.value
+            current = self.head.next
             while current != None:
                 if current.value > max:
                     max = current.value
