@@ -198,13 +198,16 @@ class DoublyLinkedList:
     in the List.
     """
     def get_max(self):
-        max = -1
-        current = self.head
-        while current != None:
-            if current.value > max:
-                max = current.value
-            current = current.next
-        return max
+        if self.is_empty():
+            return
+        else:
+            max = -1
+            current = self.head
+            while current != None:
+                if current.value > max:
+                    max = current.value
+                current = current.next
+            return max
 
 # Hi guys, i think one of the test might be testing the incorrect thing 
 # pls let me know if im wrong. It is line 80 for DoubleLinked list:
