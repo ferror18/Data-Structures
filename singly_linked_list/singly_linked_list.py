@@ -1,8 +1,3 @@
-
-def this_list_is(list):
-    return list[0] == None and list[1] == None
-
-
 class Node:
     def __str__(self):
         return f'''Value: {self.value} | Next: {self.next_node}'''
@@ -28,13 +23,16 @@ class LinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
+    
+    def is_empty(self):
+        return self.head == None and self.head == None
+
+    def has_only_one_node(self):
+        return self.head == self.tail
 
     def add_to_tail(self, value):
-        empty = [self.tail, self.head]
-
-        
         node = Node(value)
-        if this_list_is(empty):
+        if self.is_empty():
             self.head = node
             self.tail = node
         else:
@@ -42,13 +40,10 @@ class LinkedList:
             self.tail = node
     
     def remove_tail(self):
-        empty = [self.tail, self.head]
-
-
-        if this_list_is(empty):
+        if self.is_empty():
             return None
 
-        elif self.tail == self.head:
+        elif self.has_only_one_node():
             val = self.head.get_value()
             self.head = None
             self.tail = None
@@ -64,14 +59,12 @@ class LinkedList:
             return val
     
     def remove_head(self):
-        empty = [self.tail, self.head]
-
-
-        if this_list_is(empty):
+        if self.is_empty():
             return None
-        elif self.tail == self.head:
+        elif self.has_only_one_node():
             val = self.head.get_value()
-            self.head = self.head.get_next()
+            self.head = None
+            self.tail = None
             return val
         else:
             val = self.head.get_value()
@@ -80,12 +73,12 @@ class LinkedList:
 
     def contains(self, number):
         current = self.head
-        print(f'{current}\n')
-        while current.value != number:
-            if current == None:
-                return False
+        if self.is_empty():
+            return False
+        
+        while current != None:
+            if current.get_value() == number:
+                return True
             else:
                 current = current.get_next()
-
-        return True
-
+        return False
