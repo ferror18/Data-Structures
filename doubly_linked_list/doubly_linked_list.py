@@ -127,17 +127,22 @@ class DoublyLinkedList:
     List and inserts it as the new head node of the List.
     """
     def move_to_front(self, node):
-        #Node neigbors
-        if node.prev is not None:
-            node.prev.next = node.next
-        if node.next is not None:
-            node.next.prev = node.prev
-        #node
-        node.prev = None
-        node.next = self.head
-        self.head.prev = node
-        #list changes
-        self.head = node
+        if node == self.head:
+            return None
+        else:
+            #Node neigbors
+            if self.tail == node:
+                self.tail = node.prev
+            if node.prev is not None:
+                node.prev.next = node.next
+            if node.next is not None:
+                node.next.prev = node.prev
+            #node
+            node.prev = None
+            node.next = self.head
+            self.head.prev = node
+            #list changes
+            self.head = node
 
         
     """
@@ -145,17 +150,23 @@ class DoublyLinkedList:
     List and inserts it as the new tail node of the List.
     """
     def move_to_end(self, node):
-        #Node neigbors
-        if node.prev != None:
-            node.prev.next = node.next
-        if node.next != None:
-            node.next.prev = node.prev
-        #node
-        node.next = None
-        node.prev = self.tail
-        self.tail.next = node
-        #list changes
-        self.tail = node
+        if node == self.tail:
+            return None
+        else:
+            #Node neigbors
+            if self.head == node:
+                self.head = node.next
+            if node.prev != None:
+                node.prev.next = node.next
+            if node.next != None:
+                node.next.prev = node.prev
+            #node
+            node.next = None
+            node.prev = self.tail
+            self.tail.next = node
+            #list changes
+            self.tail = node
+            
     """
     Deletes the input node from the List, preserving the 
     order of the other elements of the List.
