@@ -208,14 +208,3 @@ class DoublyLinkedList:
                     max = current.value
                 current = current.next
             return max
-
-# Hi guys, i think one of the test might be testing the incorrect thing 
-# pls let me know if im wrong. It is line 80 for DoubleLinked list:
-# 79# self.dll.move_to_end(self.dll.head.next)
-# 80# self.assertEqual(self.dll.tail.value, 40)
-# at this point in the the test there is only 2 nodes on the list
-# head has value 40 and tail has value 4
-# line 79 by calling move_to_end on head.next it moves the tail back into tail
-# the tail value remains 4 and so the assertion fails on line 80
-# I believe correct test would be 79# self.dll.move_to_end(self.dll.head)
-# removing the .next

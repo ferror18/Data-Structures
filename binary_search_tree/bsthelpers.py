@@ -1,3 +1,4 @@
+
 def node_can_park_here(parent, direction):
     if direction == 'left':
         if parent.left == None:
@@ -9,16 +10,6 @@ def node_can_park_here(parent, direction):
             return True
         else:
             return False
-
-
-def park(parent, value, direction):
-    node = BSTNode(value)
-    # print(parent.value)
-    if direction == 'right':
-        parent.right = node
-    elif direction == 'left':
-        parent.left = node
-    return node
 
 def node_goes_left(self, value):
     if self.value > value:
